@@ -69,11 +69,11 @@ const Modale = ({ addSong }) => {
 	return (
 		<div>
 			<Button variant="primary" onClick={handleShow}>
-				Launch demo modal
+				Cerca un prodotto
 			</Button>
 			<Modal show={show} onHide={handleClose} size="xl">
 				<Modal.Header closeButton>
-					<Modal.Title>Modal heading</Modal.Title>
+					<Modal.Title>Cerca prodotto</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>
@@ -93,13 +93,13 @@ const Modale = ({ addSong }) => {
 					</section>
 					{visible ? (
 						<>
-							<table className="table table-bordered">
+							<table className="table table-bordered custom">
 								<TableHeader headers={headers} />
 								<tbody>
 									{commentsData.map((comment) => (
 										<tr key={comment.id}>
 											<th scope="row">{comment.id}</th>
-											<th className="col-sm-2">{comment.name}</th>
+											<th>{comment.name}</th>
 											<th className="col-sm-3">{comment.email}</th>
 											<th className="d-flex align-middle justify-content-center">
 												<form onSubmit={handleSubmit}>
@@ -108,6 +108,7 @@ const Modale = ({ addSong }) => {
 															type="text"
 															className="form-control mr-sm-8 mb-4"
 															value={title}
+															key={comment.id}
 															onChange={(e) => setTitle(e.target.value)}
 														/>
 														<button
