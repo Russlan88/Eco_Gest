@@ -14,7 +14,7 @@ code {
 		monospace;
 }
 
-.custom tr th:nth-child(2),
-.custom tr th:nth-child(4) {
+.custom tr th:nth-child(1),
+.custom tr th:nth-child(3) {
 	min-width: 320px;
 }
