@@ -18,7 +18,7 @@ const Modale = ({ addSong }) => {
 	const ITEMS_PER_PAGE = 10;
 
 	const headers = [
-		{ name: 'No#', field: 'id' },
+		// { name: 'No#', field: 'id' },
 		{ name: 'Name', field: 'name' },
 		{ name: 'Email', field: 'email' },
 		{ name: 'Comment', field: 'body' },
@@ -97,7 +97,7 @@ const Modale = ({ addSong }) => {
 								<tbody>
 									{commentsData.map((comment) => (
 										<tr key={comment.id}>
-											<th scope="row">{comment.id}</th>
+											{/* <th scope="row">{comment.id}</th> */}
 											<th>{comment.name}</th>
 											<th className="col-sm-3">{comment.email}</th>
 											<th className="d-flex align-middle justify-content-center">
@@ -132,7 +132,7 @@ const Modale = ({ addSong }) => {
 						Close
 					</Button>
 					<Button variant="primary" onClick={handleClose}>
-						Save Changes
+						Salva le modifiche
 					</Button>
 				</Modal.Footer>
 			</Modal>

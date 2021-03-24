@@ -8,7 +8,7 @@ const Input = (props) => {
 	return (
 		<input
 			type="text"
-			className="form-control mr-sm-8 mb-4"
+			className="form-control mr-sm-8 mb-2"
 			value={title}
 			onChange={(e) => setTitle(e.target.value)}
 		/>
