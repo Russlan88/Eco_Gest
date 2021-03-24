@@ -1,11 +1,6 @@
 /** @format */
 import React, { useState } from 'react';
 import Modale from './Modal';
-// import { Modal, Button } from 'react-bootstrap';
-// import { useAudio } from 'react-use';
-// import FetchData from './Fetch-data';
-
-// import useFullPageLoader from 'hooks/useFullPageLoader';
 
 function App() {
 	const addSong = (title) => {

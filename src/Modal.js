@@ -12,10 +12,11 @@ const Modale = ({ addSong }) => {
 	const [totalItems, setTotalItems] = useState(0);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [search, setSearch] = useState('');
+	const [visible, setVisible] = useState(false);
 
 	const [title, setTitle] = useState('');
 
-	const ITEMS_PER_PAGE = 50;
+	const ITEMS_PER_PAGE = 10;
 
 	const headers = [
 		{ name: 'No#', field: 'id' },
@@ -81,46 +82,55 @@ const Modale = ({ addSong }) => {
 							onSearch={(value) => {
 								setSearch(value);
 								setCurrentPage(1);
+								if (value !== '') {
+									setVisible(true);
+								} else {
+									setVisible(false);
+								}
 							}}
-						/>
-
-						<Pagination
-							total={totalItems}
-							itemsPerPage={ITEMS_PER_PAGE}
-							currentPage={currentPage}
-							onPageChange={(page) => setCurrentPage(page)}
+							// onChange={(e) => setVisible(true)}
 						/>
 					</section>
-					<table className="table table-bordered">
-						<TableHeader headers={headers} />
-						<tbody>
-							{commentsData.map((comment) => (
-								<tr key={comment.id}>
-									<th scope="row">{comment.id}</th>
-									<th className="col-sm-2">{comment.name}</th>
-									<th className="col-sm-3">{comment.email}</th>
-									<th className="d-flex align-middle justify-content-center">
-										<form onSubmit={handleSubmit}>
-											<fieldset>
-												<input
-													type="text"
-													className="form-control mr-sm-8 mb-4"
-													value={title}
-													onChange={(e) => setTitle(e.target.value)}
-												/>
-												<button
-													className="btn btn-info col-sm-12"
-													onClick={handleClose}
-												>
-													Seleziona quantit&agrave;
-												</button>
-											</fieldset>
-										</form>
-									</th>
-								</tr>
-							))}
-						</tbody>
-					</table>
+					{visible ? (
+						<>
+							<table className="table table-bordered">
+								<TableHeader headers={headers} />
+								<tbody>
+									{commentsData.map((comment) => (
+										<tr key={comment.id}>
+											<th scope="row">{comment.id}</th>
+											<th className="col-sm-2">{comment.name}</th>
+											<th className="col-sm-3">{comment.email}</th>
+											<th className="d-flex align-middle justify-content-center">
+												<form onSubmit={handleSubmit}>
+													<fieldset>
+														<input
+															type="text"
+															className="form-control mr-sm-8 mb-4"
+															value={title}
+															onChange={(e) => setTitle(e.target.value)}
+														/>
+														<button
+															className="btn btn-info col-sm-12"
+															onClick={handleClose}
+														>
+															Seleziona quantit&agrave;
+														</button>
+													</fieldset>
+												</form>
+											</th>
+										</tr>
+									))}
+								</tbody>
+							</table>
+							<Pagination
+								total={totalItems}
+								itemsPerPage={ITEMS_PER_PAGE}
+								currentPage={currentPage}
+								onPageChange={(page) => setCurrentPage(page)}
+							/>
+						</>
+					) : null}
 				</Modal.Body>
 
 				<Modal.Footer>
