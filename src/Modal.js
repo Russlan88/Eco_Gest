@@ -5,6 +5,7 @@ import { Modal, Button } from 'react-bootstrap';
 import TableHeader from './TableHeader';
 import Pagination from './Pagination';
 import Search from './Search';
+import Input from './Input';
 
 const Modale = ({ addSong }) => {
 	const [show, setShow] = useState(false);
@@ -13,8 +14,6 @@ const Modale = ({ addSong }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [search, setSearch] = useState('');
 	const [visible, setVisible] = useState(false);
-
-	const [title, setTitle] = useState('');
 
 	const ITEMS_PER_PAGE = 10;
 
@@ -39,8 +38,8 @@ const Modale = ({ addSong }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addSong(title);
-		setTitle('');
+		// addSong(title);
+		// setTitle('');
 	};
 
 	const commentsData = useMemo(() => {
@@ -104,13 +103,7 @@ const Modale = ({ addSong }) => {
 											<th className="d-flex align-middle justify-content-center">
 												<form onSubmit={handleSubmit}>
 													<fieldset>
-														<input
-															type="text"
-															className="form-control mr-sm-8 mb-4"
-															value={title}
-															key={comment.id}
-															onChange={(e) => setTitle(e.target.value)}
-														/>
+														<Input />
 														<button
 															className="btn btn-info col-sm-12"
 															onClick={handleClose}
